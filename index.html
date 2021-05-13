@@ -1,0 +1,36 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="basic.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="navbar">
+        <p id="p1"><b>The Aid</b></p>
+        <p id="p2">Home</p>
+        <p id="p6">Check-up</p>
+        <p id="p3">Yoga</p>
+        <p id="p4">Contact us</p>
+        <p id="p5">Need-Help?</p>
+    </div>
+    <div id="d1">
+        <h1 id="t2">Do you have equipments at home ?</h1>
+        <h1 id="y1">Yes</h1>
+        <h1 id="y2">No</h1>
+    </div>
+</body>
+<script>
+    $(document).ready(function() {
+        $('#y1').click(function() {
+            window.location.href = "CheckUp2.html";
+        });
+
+        $('#y2').click(function() {
+
+            window.location.href = "CheckUp.html";
+        });
+    });
+</script>
+
+</html>
