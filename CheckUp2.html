@@ -1,0 +1,164 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="CheckUp2.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="navbar">
+        <p id="p1"><b>The Aid</b></p>
+        <p id="p2">Home</p>
+        <p id="p6">Check-up</p>
+        <p id="p3">Yoga</p>
+        <p id="p4">Contact us</p>
+        <p id="p5">Need-Help?</p>
+    </div>
+    <div id="quest">
+        <div id="t3">
+            <p>Check-Up</p>
+        </div>
+        <div id="d2">
+            <h1 id="q1">
+                Q1 : What is your temprature ?
+            </h1>
+            <input type="number" id="i1">
+            <p id="u1"><b>Fahrenheit (°F)</b></p>
+            <p id="c1">Check</p>
+            <p id="r1">Result</p>
+        </div>
+        <div id="d3">
+            <h1 id="q2">
+                Q2 : What is your oxygen level ?
+            </h1>
+            <input type="number" id="i2">
+            <p id="u2"><b>percent (%)</b></p>
+            <p id="c2">Check</p>
+            <p id="r2">Result</p>
+        </div>
+        <div id="d4">
+            <h1 id="q3">
+                Q3 : What is your Blood Pressure ?
+            </h1>
+            <input type="number" id="i3">
+            <p id="u3"><b>mmHg</b></p>
+            <p id="c3">Check</p>
+            <p id="r3">Result</p>
+        </div>
+        <div id="d5">
+            <h1 id="q4">
+                Q4 : What is your Heart beat rate ?
+            </h1>
+            <input type="text" id="i4">
+            <p id="u4"><b>bpm</b></p>
+            <p id="c4">Check</p>
+            <p id="r4">Result</p>
+        </div>
+    </div>
+</body>
+<script>
+    $('document').ready(function() {
+        $('#c1').click(function() {
+            var vl = $('#i1').val();
+            if (vl > 68.6) {
+                $('#c1').hide();
+            }
+            var nor = 98.6;
+            if (vl == nor) {
+                $('#r1').text("Result : So according to your input your temprature is perfect").css("color", "green");
+            } else if (nor > vl) {
+                var res = nor - vl;
+                var last = parseFloat(res).toFixed(2);
+                if (last < 0.5) {
+                    $('#r1').text("Result : So according to your input your temprature is slightly low ,consult your doctor & take medicines , It is normal.").css("color", "green").css("visibility", "visible");
+                } else if (last < 1) {
+                    $('#r1').text("Result : So according to your input your temprature is slightly low ,consult your doctor & take medicines ").css("visibility", "visible").css("color", "red");
+                } else if (last < 2) {
+                    $('#r1').text("Result : So according to your input your temprature is low ,consult your doctor & take medicines").css("color", "red").css("visibility", "visible");
+                } else if (last > 2 && last < 30) {
+                    $('#r1').text("Result : So according to your input your temprature is highly low ,consult your doctor as soon as possible & take medicines").css("color", "red").css("visibility", "visible");
+                }
+            }
+            if (nor < vl) {
+                var res = vl - nor;
+                var last = parseFloat(res).toFixed(2);
+                if (last < 0.5) {
+                    $('#r1').text("Result : So according to your input your temprature is slightly high ,consult your doctor & take medicines , It is normal.").css("color", "green").css("visibility", "visible");
+                } else if (last < 1) {
+                    $('#r1').text("Result : So according to your input your temprature is slightly high ,consult your doctor & take medicines ").css("visibility", "visible");
+                } else if (last < 2) {
+                    $('#r1').text("Result : So according to your input your temprature is high ,consult your doctor & take medicines").css("color", "red").css("visibility", "visible");
+                } else if (last > 2) {
+                    $('#r1').text("Result : So according to your input your temprature is    very high ,consult your doctor as soon as possible & take medicines").css("color", "red").css("visibility", "visible");
+                }
+            }
+        });
+        $('#c2').click(function() {
+            var nor = 95;
+            var inp = $('#i2').val();
+
+            if (inp < 101 && inp > 1) {
+                $('#c2').hide();
+                var res = 100 - inp;
+                var last = parseFloat(res).toFixed(2);
+                if (last < 3) {
+                    $('#r2').text("Result : So According to your input , your oxygen level is good").css("visibility", "visible").css("color", "green");
+                } else if (last < 6) {
+                    $('#r2').text("Result : So According to your input , your oxygen level is OK But be aware and do yoga for your health").css("visibility", "visible").css("color", "green");
+                } else if (last < 10) {
+                    $('#r2').text("Result : So According to your input , your oxygen level is low , consult your doctor & dont panic You will be alright").css("visibility", "visible").css("color", "red");
+                } else if (last >= 10) {
+                    $('#r2').text("Result : So According to your input , your oxygen level is very low , consult your doctor & dont panic You will be alright").css("visibility", "visible").css("color", "red");
+                }
+            }
+        });
+        $('#c3').click(function() {
+            var inp = $('#i3').val();
+            if (inp > 0) {
+                $('#c3').hide();
+            }
+            var nor = 120;
+            if (inp < 120) {
+                var res = 120 - inp;
+                var last = parseFloat(res).toFixed(2);
+                if (last < 31) {
+                    $('#r3').text("Result : So According to your input , your BP is normal").css("color", "green").css("visibility", "visible");
+                } else if (last < 61 && last > 31) {
+                    $('#r3').text("Result : So According to your input , your BP is slightly low , Consult your doctor and do yoga for betterment in future").css("color", "rgb(114, 59, 70);").css("visibility", "visible");
+                } else if (last > 61 && last < 90) {
+                    $('#r3').text("Result : So According to your input , your BP is very low , Consult your doctor").css("color", "red").css("visibility", "visible");
+                }
+            }
+            if (inp > 120) {
+                var res = inp - 120;
+                var last = parseFloat(res).toFixed(2);
+                if (last < 21) {
+                    $('#r3').text("Result : So According to your input , your BP is normal").css("color", "green").css("visibility", "visible");
+                } else if (last < 31) {
+                    $('#r3').text("Result : So According to your input , your BP is high").css("color", "red").css("visibility", "visible");
+                } else if (last < 61 && last > 31) {
+                    $('#r3').text("Result : So According to your input , your BP is slightly high , Consult your doctor and do yoga for betterment in future").css("color", "rgb(114, 59, 70);").css("visibility", "visible");
+                }
+            }
+
+        });
+        $('#c4').click(function() {
+            var inp = $('#i4').val();
+            if (inp > 0) {
+                $('#c4').hide();
+            }
+            if (inp < 131 && inp > 60) {
+                $('#r4').text("Result : So According to your input , Your heart beat is normal").css("color", "green").css("visibility", "visible");
+            } else if (inp < 151 && inp >= 131) {
+                $('#r4').text("Result : So According to your input , Your heart beat is normal, If you are exercising , else your heart beat is fast").css("color", "green").css("visibility", "visible");
+            } else if (inp <= 60 && inp >= 50) {
+                $('#r4').text("Result : So According to your input , Your heart beat is slightly low, Do yoga for betterment").css("color", "black").css("visibility", "visible");
+            } else if (inp < 50 && inp > 1) {
+                $('#r4').text("Result : So According to your input , Your heart beat is low, Do yoga for betterment").css("color", "red").css("visibility", "visible");
+            }
+        });
+
+    });
+</script>
+
+</html>
